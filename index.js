@@ -146,11 +146,10 @@ this.location = location;
 */
 
 class Instructor extends Lambdasian {
-  constructor({name, language, age, location,specialty,favLanguage,catchPhrase}){
-    super({name, language, age, location,specialty,favLanguage,catchPhrase});
+  constructor({name, age, location,specialty,favLanguage,catchPhrase}){
+    super({name, age, location,specialty,favLanguage,catchPhrase});
     this.name = name;
     this.age = age;
-    this.language = language;
     this.location = location;
     this.specialty = specialty;
     this.favLanguage = favLanguage;
@@ -162,7 +161,7 @@ class Instructor extends Lambdasian {
   }
 
   grade(student, subject){
-    return `${student} receives a perfect score on ${subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 
 }
@@ -220,8 +219,19 @@ class Student extends Lambdasian {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor({name, age, location,specialty,favLanguage,catchPhrase,gradClassName,favInstructor}){
+    super({name,age, location,specialty,favLanguage,catchPhrase,gradClassName,favInstructor});
+    this.gradClassName = gradClassName;
+    this.favInstructor = favInstructor;
+  }
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+  }
+
+  debugsCode(student,subject){
+  return `${this.name} debugs ${student.name}'s code on ${subject}`
+}
 }
 
 /*
