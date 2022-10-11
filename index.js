@@ -44,7 +44,26 @@ class Airplane {
 */
 
 class Person {
+  constructor(name,age){
+    this.name = name;
+    this.age = age; 
+    this.stomach = [];
+    
+  }
   
+  eat(someFood){
+    if(this.stomach.length < 10){
+      return this.stomach.push(someFood);
+    }
+  }
+
+  poop(){
+    return this.stomach = [];
+  }
+
+  toString(name,age){
+      return `${this.name.toString()}, ${this.age.toString()}`;
+  }
 }
 
 /*
@@ -62,7 +81,28 @@ class Person {
 */
 
 class Car {
+  constructor(model,milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
   
+  fill(gallons){
+    return this.tank += gallons;
+  }  
+
+  drive(distance){
+    const usedMiles = this.tank * this.milesPerGallon;
+    if(distance <= usedMiles){
+     this.odometer += distance;
+     this.tank -= (distance/this.milesPerGallon);
+    }else{
+     this.odometer += usedMiles;
+     this.tank = 0;
+     return `I ran out of fuel at ${this.odometer} miles`
+    }
+  }
 }
 
 /*
@@ -79,7 +119,15 @@ class Car {
 */
 
 class Lambdasian {
+constructor({name,age,location}){
+this.name = name;
+this.age = age;
+this.location = location;
+}
   
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
+  }
 }
 
 /*
@@ -97,7 +145,25 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor({name, language, age, location,specialty,favLanguage,catchPhrase}){
+    super({name, language, age, location,specialty,favLanguage,catchPhrase});
+    this.name = name;
+    this.age = age;
+    this.language = language;
+    this.location = location;
+    this.specialty = specialty;
+    this.favLanguage = favLanguage;
+    this.catchPhrase = catchPhrase;
+  }
+
+  demo(subject){
+   return `Today we are learning about ${subject}`;
+  }
+
+  grade(student, subject){
+    return `${student} receives a perfect score on ${subject}`;
+  }
 
 }
 
